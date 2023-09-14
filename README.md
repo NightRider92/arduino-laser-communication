@@ -12,6 +12,8 @@ Arduino Uno (#1) listens on serial port for incoming message user wants to send.
 When user typed message received, it transmits that same message bit by bit (not byte) by using OOK modulation 
 over laser module. Laser pulses (bits) are transmitted in time interval of 12 miliseconds.
 
+Speed: 80 bps (10 bytes / sec)
+
 Arduino Uno R3 (#2) listens for incoming laser pulses (checks LDR analog value) 
 and converts the value into binary value regarding of the set threshold.
 Bits are then converted back by using bitwise operation to reconstruct the character.

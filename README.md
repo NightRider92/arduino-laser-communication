@@ -9,7 +9,7 @@ Light based communication system which consists of:
 
 **How the system works?**
 Arduino Uno (#1) listens on serial port for incoming message user wants to send.
-When message received, it transmits the message bit by bit (not byte) by using OOK modulation 
+When user typed message received, it transmits that same message bit by bit (not byte) by using OOK modulation 
 over laser module. Laser pulses (bits) are transmitted in time interval of 12 miliseconds.
 
 Arduino Uno R3 (#2) listens for incoming laser pulses (checks LDR analog value) 

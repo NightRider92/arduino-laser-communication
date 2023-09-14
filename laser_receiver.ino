@@ -30,7 +30,9 @@ void loop() {
         char c = received_char;
         received_char = 0;
         char_counter = 8;
-
+        a_val = 1024;
+        bit_val = 0;
+        
         Serial.print(c);
         c = 0;
       }

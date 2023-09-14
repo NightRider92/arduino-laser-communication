@@ -37,7 +37,8 @@ void loop() {
         c = 0;
       }
       char_counter--;
-      if(char_counter < 0) {char_counter = 8}
+      if(char_counter < 0) {char_counter = 8;}
+      delayMicroseconds(1000);
     }
   }
 }

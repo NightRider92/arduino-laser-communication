@@ -1,6 +1,33 @@
 # arduino-laser-communication
 Repository featuring experiment regarding light based communication system with 2 independent Arduino devices by using laser.
 
+**Research / experimental project**
+Light based communication system which consists of:
+- Arduino Uno R3 and Arduino Uno
+- KY-008 laser module
+- LDR (receiver) module
+
+**How the system works?**
+Arduino Uno (#1) listens on serial port for incoming message user wants to send.
+When message received, it transmits the message bit by bit (not byte) by using OOK modulation 
+over laser module. Laser pulses (bits) are transmitted in time interval of 12 miliseconds.
+
+Arduino Uno R3 (#2) listens for incoming laser pulses (checks LDR analog value) 
+and converts the value into binary value regarding of the set threshold.
+Bits are then converted back by using bitwise operation to reconstruct the character.
+
+**Laser modulation method**
+System implements basic modulation called OOK (on/off keying) since laser module is not capable doing 
+other types of modulations.
+
+**Synchronization method**
+As we are using 2 independent devices without external RTC or similar synchronization mechanism, synchronization over digital pin 
+has been implemented. When Arduino #1 sends the message, is signals to the Arduino #2 that it could start receiving the data.
+
+**Issues**
+As this is an experiment for learning purposes, I've noticed that the "delayMicroseconds()" function is not 100% accurate and when 
+sending long messages delays start drifting. When they drift from original value data cannot be properly read.
+
 Sender device
 ![image](https://github.com/NightRider92/arduino-laser-communication/assets/10942663/26e358ea-abb7-4d4f-bb15-50c789c5f151)
 

@@ -27,7 +27,8 @@ has been implemented. When Arduino #1 sends the message, is signals to the Ardui
 **Issues**
 As this is an experiment for learning purposes, I've noticed that the "delayMicroseconds()" function is not 100% accurate and when 
 sending long messages delays start drifting. When they drift from original value data cannot be properly read. 
-This is countered by decreasing delay value by 5 microseconds every 25 characters. Seems to be working.
+This is countered by decreasing delay value by 5 microseconds every 25 characters. Seems to be working for some fixed number of characters.
+Maybe interrupts should be used, but this was done for learning purposes.
 Arduino is not "hard-realtime" system.
 
 **Sender device**

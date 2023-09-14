@@ -1,7 +1,7 @@
 #define LASER_SIGNAL_PIN 7
 #define SYNC_PIN 8
 #define LSB_MASK 0x01
-#define PULSE_TIME 10000
+#define PULSE_TIME 7000
 
 String message = "";
 

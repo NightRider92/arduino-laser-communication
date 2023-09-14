@@ -1,23 +1,19 @@
 #define LASER_SIGNAL_PIN 7
 #define SYNC_PIN 8
 #define LSB_MASK 0x01
-#define PULSE_TIME 12000
+#define PULSE_TIME 10000
 
 String message = "";
 
 // Transmit data over laser
 void transmit(char c) {
-  digitalWrite(SYNC_PIN, 1);
-  delayMicroseconds(5);
-
   for (int i = 7; i >= 0; i--) {
     uint8_t bin = c >> i & LSB_MASK; // Get digit by digit (0 or 1)
+    digitalWrite(SYNC_PIN, HIGH);
     digitalWrite(LASER_SIGNAL_PIN, bin); // and transmit it over laser
+    digitalWrite(SYNC_PIN, LOW);
     delayMicroseconds(PULSE_TIME);
   }
-
-  delayMicroseconds(5);
-  digitalWrite(SYNC_PIN, 0);
 }
 
 // Setup
@@ -49,18 +45,8 @@ void loop() {
   Serial.print(message);
   Serial.print("\n");;
 
-  // Add termination
-  message += '\0';
-
-  // Calibration
-  for (short i = 0; i < 25; i++)
-  {
-    char c = '@';
-    transmit(c);
-  }
-
   // Actual message transmit
-  for (size_t i = 0; i < message.length(); i++) {
+  for (size_t i = 0; i <= message.length(); i++) {
     char c = message.charAt(i);
     transmit(c);
   }

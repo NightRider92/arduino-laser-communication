@@ -10,7 +10,7 @@ Light based communication system which consists of:
 **How the system works?**
 Arduino Uno (#1) listens on serial port for incoming message user wants to send.
 When user typed message received, it transmits that same message bit by bit (not byte) by using OOK modulation 
-over laser module. Laser pulses (bits) are transmitted in time interval of 12 miliseconds.
+over laser module. Laser pulses (bits) are transmitted in time interval of 10 miliseconds.
 
 Speed: 80 bps (10 bytes / sec)
 
@@ -25,13 +25,6 @@ other types of modulations.
 **Synchronization method**
 As we are using 2 independent devices without external RTC or similar synchronization mechanism, synchronization over digital pin 
 has been implemented. When Arduino #1 sends the message, is signals to the Arduino #2 that it could start receiving the data.
-
-**Issues**
-As this is an experiment for learning purposes, I've noticed that the "delayMicroseconds()" function is not 100% accurate and when 
-sending long messages delays start drifting. When they drift from original value data cannot be properly read. 
-This is countered by decreasing delay value by 5 microseconds every 25 characters. Seems to be working for some fixed number of characters.
-Maybe interrupts should be used, but this was done for learning purposes.
-Arduino is not "hard-realtime" system.
 
 **Sender device**
 

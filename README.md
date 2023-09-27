@@ -22,7 +22,7 @@ other types of modulations.
 
 **Synchronization method**
 As we are using 2 independent devices without external RTC or similar synchronization mechanism, so synchronization over digital pin 
-has been implemented. When Arduino #1 sends the message, is signals to the Arduino #2 that it could start receiving the data.
+has been implemented. When Arduino #1 sends the message, it signals to the Arduino #2 that it could start receiving the data.
 
 **Sender device**
 

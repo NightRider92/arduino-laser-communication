@@ -17,11 +17,11 @@ and converts the value into binary value regarding of the set threshold.
 Bits are then converted back by using bitwise operation to reconstruct the character.
 
 **Laser modulation method**
-System implements basic modulation called OOK (on/off keying) since laser module is not capable doing 
+System implements basic modulation called OOK (on/off keying) since laser module is not capable of doing 
 other types of modulations.
 
 **Synchronization method**
-As we are using 2 independent devices without external RTC or similar synchronization mechanism, synchronization over digital pin 
+As we are using 2 independent devices without external RTC or similar synchronization mechanism, so synchronization over digital pin 
 has been implemented. When Arduino #1 sends the message, is signals to the Arduino #2 that it could start receiving the data.
 
 **Sender device**
